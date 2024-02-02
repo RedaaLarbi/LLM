@@ -1,0 +1,13 @@
+Steps:
+    # Docker Build 
+    - name: ‘gcr.io/cloud-builders/docker'
+       args:  [‘build’, ’t’, ‘us-east4-docker.pkg.dev/qwiklabs-gcp-01-d696a71f74b2/streamlit-llm/my-app:${SHORT_SHA}’, ‘ . ‘ ]
+
+  # Docker push to Google Artifact registry 
+  - name: ‘gcr.io/cloud-builders/docker
+     args:  [‘push’, ‘us-east4-docker.pkg.dev/qwiklabs-gcp-01-d696a71f74b2/streamlit-llm/my-app:${SHORT_SHA}’]
+
+# Strore images in Google Artifact Registry
+
+Images: 
+    - us-east4-docker.pkg.dev/qwiklabs-gcp-01-d696a71f74b2/streamlit-llm${SHORT_SHA}    
